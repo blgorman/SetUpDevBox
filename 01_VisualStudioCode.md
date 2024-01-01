@@ -1,10 +1,14 @@
 # Visual Studio Code
 
-Get VSCode installed on your machine [download here](https://code.visualstudio.com/download).
+Get VSCode installed on your machine
 
 ## Download and install VSCode
 
 Get the version that makes sense for your machine.
+
+1. Download VSCode
+
+    [Download VSCode](https://code.visualstudio.com/download)  
 
 1. Use the System Installer for your OS
 
