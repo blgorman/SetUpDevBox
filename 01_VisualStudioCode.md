@@ -2,6 +2,10 @@
 
 Get VSCode installed on your machine
 
+## Prerequisites
+
+Make sure you have all the Windows Updates installed on your machine.
+
 ## Download and install VSCode
 
 Get the version that makes sense for your machine.
@@ -65,4 +69,4 @@ Make sure you can open VSCode from the command line
 
 ## Complete
 
-You have now successfully installed VSCode on your machine.
+You have now successfully installed VSCode on your machine.  
