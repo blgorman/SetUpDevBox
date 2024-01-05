@@ -24,7 +24,7 @@ In this task you'll get Visual Studio installed on your machine.
 
 >**Note:** If you have a professional or enterprise license, you can download the appropriate version instead.
 
-    Click on the `Free download` under the `Community` section.
+    - Click on the `Free download` under the `Community` section.
 
 ## Install Visual Studio
 
@@ -34,7 +34,15 @@ In this task you'll get Visual Studio installed on your machine.
 
 During the installation you will select the workloads you want to install.  The following workloads should be selected at minimum (you can select others if you want):
 
-1. 
+1. ASP.NET and web development
+1. .NET desktop development
+1. Data storage and processing
+
+Optional
+
+1. Azure development
+1. .NET Multi-platform development (MAUI)
+1. Game development with Unity
 
 ### Select Individual Components
 
@@ -46,6 +54,8 @@ Along with workloads, you can select additional components.  The additional comp
 - .NET 7 (EOS - June 2024)
 
 1. .NET 8 should already be selected, ensure that it is.
+1. .NET Framework 4.8 SDK/4.72 should be included
+    - don't do others unless you have specific needs (i.e. you have a .NET Framework 4.51 project that you are supporting)
 
 ### Select Language Packs  
 
@@ -87,6 +97,8 @@ In this step you'll create a new web project to validate your installation and d
 1. Run the project
 1. Click on `Register` and create a new user
 1. Stop the project after seeing the error
+1. Modify the connection string in appsettings.json
+    - Add `TrustServerCertificate=True;` to the connection string
 1. Open the Package Manager Console
 1. Run the following command to create the database
     - `Update-Database`

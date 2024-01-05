@@ -45,8 +45,8 @@ A few of these walkthroughs are completely optional.  You may only need some of 
 
 ## Videos   
 
-1. [Visual Studio Code]()
-1. [Windows Terminal]()
+1. [Visual Studio Code](https://youtu.be/uQiL5-cjhJM)
+1. [Windows Terminal](https://youtu.be/6VXk3leS084)
 1. [GIT]()
 1. [SQL Server]()
 1. [Visual Studio Community]()
