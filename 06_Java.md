@@ -22,3 +22,6 @@ Once you have Java installed and working, create a simple program in VSCode to v
 1. Run the program
 1. Validate the output
 
+## Conclusion
+
+At this point you should have Java working on your machine.  If you are going to be doing production-level Java development, you should also install Eclipse, Netbeans, or IntelliJ.  For academic Java development, VSCode should be sufficient.  Additionally, if you need more help, look into a simple Java IDE like BlueJ.
