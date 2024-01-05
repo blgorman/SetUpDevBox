@@ -2,6 +2,14 @@
 
 In this task, you'll get Visual Studio with the .NET tools for Desktop, Web, and Azure development installed on your machine.
 
+## Other IDE Options  
+
+If you are not doing .NET Development or you are on a Mac, you will likely not want/need Visual Studio.  You can skip this walkthrough in that case.  You may also consider the following alternatives:
+
+1. Eclipse (Java Development)
+1. IntelliJ (Java Development)
+1. Jetbrains Rider (.NET Development on a Mac - requires a subscription)
+
 ## Task 1 - Download Visual Studio
 
 In this task you'll get Visual Studio installed on your machine.

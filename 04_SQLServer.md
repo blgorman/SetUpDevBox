@@ -2,7 +2,13 @@
 
 In this walkthrough you'll get SQL Server and SQL Server Management Studio installed on your machine.
 
->**Note:** If you are using a mac or linux trying to do this set up, you can't do SQL Server from your machine. In order to make SQL Server work on your mac or linux machine you'll need to set up SQL server to run in a container.
+>**Note:** If you are using a Mac or Linux trying to do this set up, you can't do SQL Server from your machine. In order to make SQL Server work on your mac or linux machine you'll need to set up SQL server to run in a container.
+
+## Other Database Options
+
+If you are not doing .NET development and are doing typical LAMP development, you can use MySQL or MariaDB.  If you are doing Java development, you can alternatively use MySQL, MariaDB, or Oracle (or you can use SQL if you want).  If you are doing Python development, you can use MySQL, MariaDB, or PostgreSQL.  
+
+This walkthrough will not cover installing those tools, but you can find instructions on how to install them on their respective websites.  Additionally, you can skip SQL Server and SSMS if you are not doing .NET development or Java/Azure development.
 
 ## Download and Install SQL Server
 
