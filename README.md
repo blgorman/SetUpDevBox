@@ -1,0 +1,70 @@
+# Getting your Dev Box Set up
+
+Hello and welcome to this walkthrough on getting your dev box set up.  This walkthrough will walk you through the steps to get your Windows machine for modern cloud application development.  This will include installing the following:
+
+- Visual Studio Code
+- Windows Terminal
+- GIT
+- SQL Server Developer Edition
+- SQL Server Management Studio
+- Visual Studio Community
+- Java 21
+- Chocolatey
+- NodeJS
+- NPM
+- Yarn
+- Angular
+- Windows Subsystem for Linux (WSL2)
+- Ubuntu
+- Docker
+- Azure CLI
+
+## Prerequisites
+
+This walkthrough assumes you have a Windows machine.  It also assumes you have administrative rights on your machine.  If you do not have administrative rights on your machine, you will not be able to complete this walkthrough.
+
+## Getting Started  
+
+You can mostly complete these modules in any order, however I would recommend doing the first 5 modules in order.  If you are following the walkthrough, you must do module 4 before you can complete module 5.
+
+A few of these walkthroughs are completely optional.  You may only need some of them.  If you don't need a module, then skip it and move on.
+
+## Modules  
+
+1. [Visual Studio Code](./01_VisualStudioCode.md)
+1. [Windows Terminal](./02_WindowsTerminal.md)
+1. [GIT](./03_GIT.md)
+1. [SQL Server](./04_SQLServer.md)
+1. [Visual Studio Community](./05_VisualStudioCommunity.md)
+1. [Java](./06_Java.md)
+1. [Chocolatey](./07_Chocolatey.md)
+1. [Node, NPM, YARN, and Angular](./08_NodeNPMYarn.md)
+1. [Windows Subsystem for Linux](./09_WindowsSubsystemForLinux.md)
+1. [Docker](./10_Docker.md)
+1. [Azure CLI](./11_AzureCLI.md)
+
+## Videos   
+
+1. [Visual Studio Code]()
+1. [Windows Terminal]()
+1. [GIT]()
+1. [SQL Server]()
+1. [Visual Studio Community]()
+1. [Java]()
+1. [Chocolatey]()
+1. [Node, NPM, YARN, and Angular]()
+1. [Windows Subsystem for Linux]()
+1. [Docker]()
+1. [Azure CLI]()
+
+
+## Conclusion
+
+I hope you have found this information useful and that you are able to get your machine set up for modern cloud application development.  If you have any questions, please feel free to reach out to me on 
+
+- twitter [@blgorman](https://twitter.com/blgorman)
+- linked in [Brian Gorman](https://www.linkedin.com/in/brian-l-gorman/)  
+
+## Feedback
+
+If you have any issues or feedback, please open an issue on the repository or leave comments.  I will try to respond as quickly as possible, and appreciate any feedback, positive or negative.  If you have any suggestions for improvements, please feel free to open an issue or a pull request as well.
