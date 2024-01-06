@@ -53,13 +53,13 @@ A few of these walkthroughs are completely optional.  You may only need some of 
 1. [SQL Server - Part 2 - Validate installation, connect SSMS, download and restore AdventureWorks2022 Full](https://youtu.be/7TbbxHXBQiU)  
 1. [Visual Studio Community - Part 1 - Install Visual Studio Community](https://youtu.be/s5Z1KfnSO3A)  
 1. [Visual Studio Community - Part 2 - Validate installation and create an MVC web that connects to the local SQL Database](https://youtu.be/NQJ67GFgZrE)  
-1. [Java 21](https://youtu.be/Nrn2LcZ8Lsc)
-1. [Chocolatey](https://youtu.be/it9-4S5F174)
-1. [Node, NPM, YARN, and Angular](https://youtu.be/apFkxF06Yxg)
-1. [Windows Subsystem for Linux](https://youtu.be/GzDNijxmN14)
-1. [Docker without Docker Desktop]()
-1. [Docker Desktop Quick Look (installed on another machine, reviewed to see it in action)]()
-1. [Azure CLI]()
+1. [Java 21](https://youtu.be/Nrn2LcZ8Lsc)  
+1. [Chocolatey](https://youtu.be/it9-4S5F174)  
+1. [Node, NPM, YARN, and Angular](https://youtu.be/apFkxF06Yxg)  
+1. [Windows Subsystem for Linux](https://youtu.be/GzDNijxmN14)  
+1. [Docker without Docker Desktop](https://youtu.be/HijkDNoswoc)  
+1. [Docker Desktop Quick Look (installed on another machine, reviewed to see it in action)](https://youtu.be/hDT-KJg5jlQ)  
+1. [Azure CLI](https://youtu.be/25EUwrcrKrs)  
 
 ## Conclusion
 

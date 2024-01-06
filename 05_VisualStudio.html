@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>05_VisualStudio.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="installing-visual-studio">Installing Visual Studio</h1>
+<p>In this task, you'll get Visual Studio with the .NET tools for Desktop, Web, and Azure development installed on your machine.</p>
+<h2 id="other-ide-options">Other IDE Options</h2>
+<p>If you are not doing .NET Development or you are on a Mac, you will likely not want/need Visual Studio.  You can skip this walkthrough in that case.  You may also consider the following alternatives:</p>
+<ol>
+<li>Eclipse (Java Development)</li>
+<li>IntelliJ (Java Development)</li>
+<li>Jetbrains Rider (.NET Development on a Mac - requires a subscription)</li>
+</ol>
+<h2 id="task-1---download-visual-studio">Task 1 - Download Visual Studio</h2>
+<p>In this task you'll get Visual Studio installed on your machine.</p>
+<ol>
+<li>
+<p>Open a browser</p>
+</li>
+<li>
+<p>Search for <code>Visual Studio Downloads</code></p>
+</li>
+<li>
+<p>Click on the <code>Visual Studio Downloads</code> link</p>
+<p><a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio Downloads</a></p>
+</li>
+<li>
+<p>Unless you have a license for Visual Studio, you'll want to download the <code>Community</code> edition</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> If you have a professional or enterprise license, you can download the appropriate version instead.</p>
+</blockquote>
+<pre><code>- Click on the `Free download` under the `Community` section.
+</code></pre>
+<h2 id="install-visual-studio">Install Visual Studio</h2>
+<ol>
+<li>Run the installer to start the installation process</li>
+</ol>
+<h3 id="select-workloads">Select Workloads</h3>
+<p>During the installation you will select the workloads you want to install.  The following workloads should be selected at minimum (you can select others if you want):</p>
+<ol>
+<li>ASP.NET and web development</li>
+<li>.NET desktop development</li>
+<li>Data storage and processing</li>
+</ol>
+<p>Optional</p>
+<ol>
+<li>Azure development</li>
+<li>.NET Multi-platform development (MAUI)</li>
+<li>Game development with Unity</li>
+</ol>
+<h3 id="select-individual-components">Select Individual Components</h3>
+<p>Along with workloads, you can select additional components.  The additional components allow you to add additional functionality to Visual Studio.  The following components should be selected at minimum (you can select others if you want):</p>
+<ol>
+<li>Get the two previous versions of .NET Core still in support (.NET 7 goes out of support by June 2024).</li>
+</ol>
+<ul>
+<li>.NET 6 (EOS - November 2024)</li>
+<li>.NET 7 (EOS - June 2024)</li>
+</ul>
+<ol>
+<li>.NET 8 should already be selected, ensure that it is.</li>
+<li>.NET Framework 4.8 SDK/4.72 should be included
+<ul>
+<li>don't do others unless you have specific needs (i.e. you have a .NET Framework 4.51 project that you are supporting)</li>
+</ul>
+</li>
+</ol>
+<h3 id="select-language-packs">Select Language Packs</h3>
+<p>If you need additional languages, you can select them here.  Otherwise, you can skip this step.</p>
+<h3 id="select-installation-locations">Select Installation Locations</h3>
+<ol>
+<li>
+<p>Complete the installation in the default location</p>
+</li>
+<li>
+<p>Select <code>Install while downloading</code> to speed up the installation process.</p>
+</li>
+</ol>
+<h2 id="validate-visual-studio-is-installed">Validate Visual Studio is installed</h2>
+<p>After Visual Studio Community (or other edition) is installed, you will need to reboot your machine at some point.</p>
+<p>You can reboot now, or you can wait until the end of this validation step.</p>
+<h3 id="get-started">Get started</h3>
+<p>When getting started you will need to eventually sign in with a Microsoft account.  You can skip this step for now, but plan on using an outlook or hotmail or other personal email to get signed in.</p>
+<blockquote>
+<p><strong>Note:</strong> If you are using a version on a work subscription, of course you need to use that email.  For VSCommunity, I recommend using a personal email.</p>
+</blockquote>
+<ol>
+<li>Open Visual Studio</li>
+<li>Log in or skip the login for up to 30 days</li>
+</ol>
+<h3 id="create-a-new-project-optional">Create a new project (optional)</h3>
+<p>In this step you'll create a new web project to validate your installation and database.</p>
+<ol>
+<li>Click on <code>Create a new project</code></li>
+<li>Select <code>ASP.NET Core MVC Model-View-Controller project</code></li>
+<li>Create the project with
+<ul>
+<li>Individual Accounts (ensures database is required and wired up)</li>
+</ul>
+</li>
+<li>Modify the connection string to use
+<ul>
+<li>server: localhost</li>
+<li>database: projectnamedb</li>
+<li>TrustServerCertificate: true</li>
+</ul>
+</li>
+<li>Run the project</li>
+<li>Click on <code>Register</code> and create a new user</li>
+<li>Stop the project after seeing the error</li>
+<li>Modify the connection string in appsettings.json
+<ul>
+<li>Add <code>TrustServerCertificate=True;</code> to the connection string</li>
+</ul>
+</li>
+<li>Open the Package Manager Console</li>
+<li>Run the following command to create the database
+<ul>
+<li><code>Update-Database</code></li>
+</ul>
+</li>
+<li>Run the project again</li>
+<li>Click on <code>Register</code> and create a new user</li>
+<li>Confirm the user</li>
+<li>Log in with the user</li>
+<li>Open SSMS and connect to the database</li>
+<li>Confirm the user is in the database</li>
+</ol>
+<h3 id="reboot-the-machine">Reboot the machine</h3>
+<p>It's a good time to reboot the machine now.</p>
+<h3 id="run-windows-updates">Run Windows Updates</h3>
+<ol>
+<li>Open Windows Updates</li>
+<li>Check/Run Windows Updates</li>
+<li>Reboot the machine if necessary</li>
+<li>Complete any pending updates and repeat until no more updates are available.</li>
+</ol>
+<h2 id="complete">Complete</h2>
+<p>This completes the walkthrough for getting Visual Studio installed on your machine.</p>
+
+</body>
+</html>

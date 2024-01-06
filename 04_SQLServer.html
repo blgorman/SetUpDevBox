@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>04_SQLServer.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sql-server-sql-and-sql-server-management-studio-ssms">SQL Server (SQL) and SQL Server Management Studio (SSMS)</h1>
+<p>In this walkthrough you'll get SQL Server and SQL Server Management Studio installed on your machine.</p>
+<blockquote>
+<p><strong>Note:</strong> If you are using a Mac or Linux trying to do this set up, you can't do SQL Server from your machine. In order to make SQL Server work on your mac or linux machine you'll need to set up SQL server to run in a container.</p>
+</blockquote>
+<h2 id="other-database-options">Other Database Options</h2>
+<p>If you are not doing .NET development and are doing typical LAMP development, you can use MySQL or MariaDB.  If you are doing Java development, you can alternatively use MySQL, MariaDB, or Oracle (or you can use SQL if you want).  If you are doing Python development, you can use MySQL, MariaDB, or PostgreSQL.</p>
+<p>This walkthrough will not cover installing those tools, but you can find instructions on how to install them on their respective websites.  Additionally, you can skip SQL Server and SSMS if you are not doing .NET development or Java/Azure development.</p>
+<h2 id="download-and-install-sql-server">Download and Install SQL Server</h2>
+<p>The first task it get SQL Server Developer edition on your machine.</p>
+<h3 id="task-1---download-sql-server">Task 1 - Download SQL Server</h3>
+<p>In this task you'll get SQL Server installed</p>
+<ol>
+<li>
+<p>Open a browser</p>
+</li>
+<li>
+<p>Search for <code>SQL Server Downloads</code></p>
+</li>
+<li>
+<p>Click on the <code>SQL Server Downloads</code> link</p>
+<p><a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads" target="_blank">SQL Server Downloads</a></p>
+</li>
+<li>
+<p>Find the <code>Developer</code> edition by scrolling down the page</p>
+</li>
+<li>
+<p>Click the button that says <code>Download now</code> under the <code>Developer</code> icon</p>
+<p><a href="https://go.microsoft.com/fwlink/p/?linkid=2215158&amp;clcid=0x409&amp;culture=en-us&amp;country=us" target="_blank">Download SQL Server Developer Edition</a></p>
+</li>
+</ol>
+<h3 id="task-2---install-sql-server">Task 2 - Install SQL Server</h3>
+<p>Install the SQL Server instance on your machine.</p>
+<ol>
+<li>Run the installer to start the installation process</li>
+<li>Select <code>Basic</code> installation</li>
+<li>Click <code>Accept</code> on the license terms</li>
+<li>Leave the defaults and Click <code>Install</code></li>
+<li>Wait for the installation to complete (maybe 8-10 minutes, grab a coffee and take a break).</li>
+</ol>
+<h2 id="download-and-install-sql-server-management-studio">Download and Install SQL Server Management Studio</h2>
+<p>The second task is to get SQL Server Management Studio installed on your machine.</p>
+<h3 id="task-1---download-and-install-ssms">Task 1 - Download and Install SSMS</h3>
+<p>Get SSMS downloaded and installed on your machine.</p>
+<ol>
+<li>
+<p>Search for <code>SSMS Download</code> (or click on the <code>Install SSMS</code> link on the SQL Server Downloads dialog if you still have that open`)</p>
+</li>
+<li>
+<p>Click on the link to <code>Download SQL Server Management Studio (SSMS)</code></p>
+</li>
+<li>
+<p>Click on the link to <code>Download SSMS</code></p>
+<p><a href="https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16#download-ssms" target="_blank">Download SQL Server Management Studio (SSMS)</a></p>
+</li>
+<li>
+<p>Click on the link for the <code>Free Download for SQL Server Management Studio (SSMS) XX.X</code></p>
+<p><a href="https://aka.ms/ssmsfullsetup" target="_blank">&quot;Free download for SQL Server Management Studio (SSMS)</a></p>
+</li>
+<li>
+<p>Run the installer to complete the process</p>
+</li>
+</ol>
+<h2 id="ensure-you-can-connect-to-sql-server">Ensure you can connect to SQL Server</h2>
+<p>The third task is to ensure you can connect to SQL Server from SQL Server Management Studio.</p>
+<h3 id="task-1---connect-to-sql-server">Task 1 - Connect to SQL Server</h3>
+<p>Make sure that you can connect to SQL Server from SSMS.</p>
+<ol>
+<li>Open SSMS</li>
+<li>Connect to the <code>localhost</code> instance using your windows credentials</li>
+</ol>
+<p>You are now ready to work with SQL Server and SSMS on your machine.</p>
+<h2 id="get-adventureworks-database">Get AdventureWorks Database</h2>
+<p>In this last part (optional), you can get a sample database, restore it, and ensure your machine is ready to work with SQL Server.</p>
+<h3 id="task-1---download-adventureworks-and-restore">Task 1 - Download AdventureWorks and Restore</h3>
+<p>In this task you'll get the download.  You can choose the full or the LT version, depending on what makes sense for your needs.</p>
+<ol>
+<li>
+<p>Open a browser</p>
+</li>
+<li>
+<p>Search for <code>AdventureWorks Download</code></p>
+<p><a href="https://docs.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver15&amp;tabs=ssms" target="_blank">AdventureWorks Download</a></p>
+</li>
+<li>
+<p>Click on the appropriate <code>AdventureWorks Download</code> link [it doesn't matter which one you choose, unless you have a reason to get an older version - 2017 will run on 2022, etc as these are not specific to a database version]</p>
+</li>
+<li>
+<p>Use SSMS to <code>Restore</code> the database (under Database-&gt; Restore Database)</p>
+</li>
+<li>
+<p>Find the folder for where the backup should be stored</p>
+</li>
+<li>
+<p>Move the backup file to that folder</p>
+</li>
+<li>
+<p>Restore the database</p>
+</li>
+</ol>
+<h3 id="task-2---query-adventureworks">Task 2 - Query AdventureWorks</h3>
+<p>In this task you'll just query the table to show that the database is installed and working and the machine is handling SQL Server as expected.</p>
+<ol>
+<li>Open SSMS</li>
+<li>Connect to the <code>localhost</code> instance using your windows credentials</li>
+<li>Expand the <code>AdventureWorks</code> database</li>
+<li>Expand the <code>Tables</code> folder</li>
+<li>Right click on the <code>Person.Person</code> table and select <code>Select Top 1000 Rows</code>
+<ul>
+<li>can also do the <code>Script Table as</code> -&gt; <code>Select to</code> -&gt; <code>New Query Window</code> option
+<ul>
+<li>hit f5 to run the query</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>You should see the data from the table</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>You have now installed SQL Server and SSMS and restored a database to prove that you have a fully working and enabled SQL Server instance on your machine with SSMS to query the data at will.</p>
+
+</body>
+</html>

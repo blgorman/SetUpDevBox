@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>03_GIT.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="installing-git">Installing GIT</h1>
+<p>In this walkthrough you'll get GIT installed on your machine</p>
+<h2 id="download-and-install-git">Download and Install GIT</h2>
+<p>In this first part you'll install GIT on your machine.</p>
+<h3 id="task-1---download-git">Task 1 - Download GIT</h3>
+<p>First you need to download and install GIT</p>
+<ol>
+<li>
+<p>Download GIT</p>
+<p>In any browser, type</p>
+<pre class="hljs"><code><div>git download
+</div></code></pre>
+<p>This should help you navigate to the page where you can download GIT.  If not, you can use this link:</p>
+<p><a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a></p>
+</li>
+</ol>
+<h3 id="task-2---install-git">Task 2 - Install GIT</h3>
+<p>Now you need to install GIT.  Make sure to apply recommended settings as shown in the video and listed here:</p>
+<ol>
+<li>
+<p>Run the installer</p>
+<p>Run the installer you downloaded in the previous step.</p>
+</li>
+<li>
+<p>Select Components</p>
+<blockquote>
+<p>Windows Explorer Integration:</p>
+</blockquote>
+<ul>
+<li>Open GIT Bash Here (checked)
+This will allow you to right click on a folder in Windows Explorer and open GIT Bash in that folder.</li>
+<li>Open GIT GUI Here (not checked)
+This will allow you to right click on a folder in Windows Explorer and open GIT GUI in that folder.  It is almost 100% likely you would use any other GUI tool than this one, so this will just get in the way.  Other GUI options include:
+<ul>
+<li>GitKraken</li>
+<li>SourceTree</li>
+<li>Visual Studio Code</li>
+<li>Visual Studio</li>
+<li>etc</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>GIT LFS (Large File Support): (checked)</p>
+</blockquote>
+<blockquote>
+<p>Associate .git* configuration files with the default text editor? (checked)</p>
+</blockquote>
+<blockquote>
+<p>Associate .sh files to be run with Bash? (checked)</p>
+</blockquote>
+<blockquote>
+<p>Check daily for GIT for Windows updates? (checked)</p>
+</blockquote>
+<blockquote>
+<p>(NEW!) Add a Git Bash Profile to Windows Terminal? (checked - but doesn't work at this time)</p>
+</blockquote>
+<blockquote>
+<p>(NEW!) Scalar (Git add-on to manage large-scale repositories) (checked - optional)</p>
+</blockquote>
+</li>
+<li>
+<p>Choosing the default editor used by GIT</p>
+<blockquote>
+<p>Use Visual Studio Code as Git's default editor? (selected)</p>
+</blockquote>
+<pre><code> Do not use the insider build.
+</code></pre>
+</li>
+<li>
+<p>Adjusting the name of the initial branch in new repositories</p>
+<blockquote>
+<p>Override the default branch name for new repositories? (selected)</p>
+</blockquote>
+<pre><code> This setting makes the name of the default branch `main` in new repositories.  
+</code></pre>
+</li>
+<li>
+<p>Adjusting the PATH environment</p>
+<blockquote>
+<p>Git from the command line and also from 3rd-party software? (selected)</p>
+</blockquote>
+<pre><code> This will add the GIT installation to your PATH environment variable.  This will allow you to run GIT from the command line.  
+</code></pre>
+</li>
+<li>
+<p>Choosing the SSH executable</p>
+<blockquote>
+<p>Use bundled OpenSSH (selected)</p>
+</blockquote>
+<pre><code> This will use the ssh.exe client that is installed with Git.  This is the preferred option.  
+</code></pre>
+</li>
+<li>
+<p>Choosing the HTTPS transport backend</p>
+<blockquote>
+<p>Use the OpenSSL library (selected)</p>
+</blockquote>
+<pre><code> Server certificates will be validated using the ca-bundle.crt file.  This is the preferred option.
+</code></pre>
+</li>
+<li>
+<p>Configuring the line ending conversions</p>
+<blockquote>
+<p>Checkout Windows-style, commit Unix-style line endings (selected)</p>
+</blockquote>
+<pre><code> This will convert line endings to Windows-style when you checkout files.  This is the preferred option.
+</code></pre>
+<blockquote>
+<p>Checkout as-is, commit Unix-style line endings (not selected)</p>
+</blockquote>
+<pre><code> This will not convert line endings when you checkout files.  This is not the preferred option for a windows machine because line-endings for *.nix (mac/linux) use a different format for cr/lf than Windows and you will get a ton of notifications about line endings being different for developers.
+</code></pre>
+<blockquote>
+<p>Checkout as-is, commit as-is (not selected)</p>
+</blockquote>
+<pre><code> This is a very bad option because you will check the files out, convert the line endings then check them in with a non-shared line ending.  This will cause a ton of issues for developers in a shared environment.  If you are the only developer you wouldn't notice any problems.
+</code></pre>
+</li>
+<li>
+<p>Configuring the terminal emulator to use with GIT Bash</p>
+<blockquote>
+<p>Use MinTTY (the default terminal of MSYS2) (selected)</p>
+</blockquote>
+<pre><code> This is the preferred option.  MinTTY is a terminal emulator that is part of the MSYS2 project.  It is a very good terminal emulator and is the default for GIT Bash.
+</code></pre>
+</li>
+<li>
+<p>Choose the default behavior of <code>git pull</code></p>
+<blockquote>
+<p>Default (Fast-forward or merge) (selected)</p>
+</blockquote>
+<pre><code> This is the preferred option.  This will do a fast-forward merge if possible.  If not, it will do a merge commit.
+</code></pre>
+<blockquote>
+<p>Rebase (not selected)</p>
+</blockquote>
+<pre><code> Use this option if you are always rebasing your branches.  This is not the preferred option.  You could have some issues if you are not aware of how to work with rebasing.
+</code></pre>
+<blockquote>
+<p>Only ever fast-forward (not selected)</p>
+</blockquote>
+<pre><code> This is not the preferred option.  This will only do a fast-forward merge.  If a fast-forward merge is not possible, it will fail to pull changes.
+</code></pre>
+</li>
+<li>
+<p>Choose a credential helper</p>
+<blockquote>
+<p>Git Credential Manager (selected)</p>
+</blockquote>
+<pre><code> This is the preferred option.  This will use the Windows Credential Manager to store your credentials.  This is the best option for Windows.  This allows you to log in only one time to your GitHub/BitBucket/GitLab/ADO account and uses the credentials from the Windows Credential Manager to authenticate you to the remote repository for every additional operation when required.
+</code></pre>
+</li>
+<li>
+<p>Configure extra options</p>
+<blockquote>
+<p>Enable file system caching (selected)</p>
+</blockquote>
+<pre><code> This is the preferred option.  This will cache file system operations to speed up GIT operations.  This is a good option for Windows.
+</code></pre>
+<blockquote>
+<p>Enable symbolic links (not selected)</p>
+</blockquote>
+<pre><code> You can turn this on if you want to, but typically you won't need this option on windows. 
+ 
+ From the documentation [https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/create-symbolic-links](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/create-symbolic-links): 
+ 
+ This privilege should only be given to trusted users. Symbolic links can expose security vulnerabilities in applications that aren't designed to handle them.
+</code></pre>
+</li>
+<li>
+<p>Configuring Experimental Options</p>
+<blockquote>
+<p>Enable experimental support for pseudo consoles (not selected)</p>
+</blockquote>
+<blockquote>
+<p>Enable experimental built-in file-system monitor (not selected)</p>
+</blockquote>
+</li>
+<li>
+<p>Completing the installation</p>
+<p>Complete the installation</p>
+</li>
+</ol>
+<h2 id="validate-git-is-installed">Validate GIT is installed</h2>
+<p>In this next step you'll validate that GIT is installed and working correctly.</p>
+<h3 id="task-1---validate-git-is-installed-by-version">Task 1 - Validate GIT is installed by Version</h3>
+<p>In this task you'll validate that GIT is installed by checking the version.</p>
+<ol>
+<li>
+<p>Open the <code>Bash</code> command prompt</p>
+</li>
+<li>
+<p>Type the command</p>
+<pre class="hljs"><code><div>git --version
+</div></code></pre>
+<p>You should see something like this (likely not exactly this as versions change all the time):</p>
+<pre class="hljs"><code><div>git version 2.43.0.windows.1
+</div></code></pre>
+</li>
+</ol>
+<h3 id="task-2---create-a-repository-and-commit-a-file">Task 2 - Create a repository and commit a file</h3>
+<p>If the machine is for a specific user, you can configure the user name and email.  If the machine is just being configured for any user, then skip this step.  Assuming the reason you are here is to set up your machine, you should do this step (even if you don't understand the commands).</p>
+<p>In this task, you'll create a repository and commit a file to it.</p>
+<ol>
+<li>
+<p>In <code>Bash</code> change to the <code>C:/</code> folder</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> C:
+</div></code></pre>
+</li>
+<li>
+<p>Make a new directory for all of your code projects and change to that directory</p>
+<pre class="hljs"><code><div>mkdir code
+<span class="hljs-built_in">cd</span> code
+</div></code></pre>
+</li>
+<li>
+<p>Make a new directory for this project and change to that directory</p>
+<pre class="hljs"><code><div>mkdir git-test
+<span class="hljs-built_in">cd</span> git-test
+</div></code></pre>
+</li>
+<li>
+<p>Initialize a new repository</p>
+<pre class="hljs"><code><div>git init
+</div></code></pre>
+</li>
+<li>
+<p>Create a new file</p>
+<pre class="hljs"><code><div>touch README.md
+</div></code></pre>
+</li>
+<li>
+<p>Add the file</p>
+<pre class="hljs"><code><div>git add .
+</div></code></pre>
+<p>-or-</p>
+<pre class="hljs"><code><div>git add README.md
+</div></code></pre>
+</li>
+<li>
+<p>Commit the file</p>
+<pre class="hljs"><code><div>git commit -m <span class="hljs-string">"Initial commit"</span>
+</div></code></pre>
+<p>You should see a message:</p>
+<pre class="hljs"><code><div>Author identity unknown  
+
+*** Please tell me who you are.
+
+Run
+  git config --global user.email &quot;you@example.com&quot;
+  git config --global user.name &quot;Your Name&quot;
+
+to set your account's default identity.
+...
+</div></code></pre>
+</li>
+<li>
+<p>Configure your user name and email</p>
+<p>Use the email you use to sign in to GitHub/BitBucket/GitLab/ADO and your full name.  This will be used to sign all commits.</p>
+<pre class="hljs"><code><div>git config --global user.email <span class="hljs-string">"youremail@yoursite.com"</span>
+git config --global user.name <span class="hljs-string">"Your Name"</span>
+</div></code></pre>
+</li>
+<li>
+<p>Commit the file again</p>
+<pre class="hljs"><code><div>git commit -m <span class="hljs-string">"Initial commit"</span>
+</div></code></pre>
+</li>
+<li>
+<p>Check the status of the repository</p>
+<pre class="hljs"><code><div>git status
+</div></code></pre>
+<p>You should see a message:</p>
+<pre class="hljs"><code><div>On branch main
+nothing to commit, working tree clean
+</div></code></pre>
+</li>
+</ol>
+<p>GIT is now installed and working correctly on your machine.</p>
+<h2 id="updating-terminal-to-show-git-bash-as-an-option">Updating Terminal to Show GIT Bash as an option</h2>
+<p>In this final step you'll set your Windows Terminal to show GIT Bash as an option.</p>
+<ol>
+<li>
+<p>Open Windows Terminal</p>
+</li>
+<li>
+<p>Click on the down arrow next to the plus sign</p>
+</li>
+<li>
+<p>Click on Settings</p>
+<p>When the settings.json file opens, you'll see a list of profiles.  Each profile is a different terminal option.  You can add as many as you want.  You can also change the order of the profiles to change the order they appear in the drop down menu.</p>
+</li>
+<li>
+<p>Open a PowerShell tab to create a GUID</p>
+<p>Run the following command to create a GUID</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">New-Guid</span>
+</div></code></pre>
+<p>Copy the GUID that is returned.  It will look something like this:</p>
+<pre class="hljs"><code><div>ad15e7fa-85c1-4a3c-828c-c75396b7d22b
+</div></code></pre>
+</li>
+</ol>
+<h3 id="latest-version--modify-json-directly">Latest Version || Modify JSON directly</h3>
+<p>It seems like the versions are different for how Windows Terminal might behave.</p>
+<p>If you are sent to the JSON file to modify it directly:</p>
+<ol>
+<li>
+<p>Add the following profile to the list of profiles</p>
+<p>Use the GUID generated above and put it in the <code>guid</code> section of this text.  Also, make sure the <code>commandline</code> and <code>icon</code> sections match the location of your GIT Bash installation (which they should if you installed it in the default location).</p>
+<ul>
+<li><code>%PROGRAMFILES%</code> is a variable that will resolve to <code>C:\Program Files</code></li>
+<li><code>%USERPROFILE%</code> is a variable that will resolve to <code>C:\Users\&lt;your username&gt;</code>.</li>
+</ul>
+<pre class="hljs"><code><div>{
+    <span class="hljs-attr">"guid"</span>: <span class="hljs-string">"{ad15e7fa-85c1-4a3c-828c-c75396b7d22b}"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"GIT Bash"</span>,
+    <span class="hljs-attr">"commandline"</span>: <span class="hljs-string">"%PROGRAMFILES%/Git/usr/bin/bash.exe -i -l"</span>,
+    <span class="hljs-attr">"icon"</span>: <span class="hljs-string">"%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico"</span>,
+    <span class="hljs-attr">"startingDirectory"</span>: <span class="hljs-string">"%USERPROFILE%"</span>,
+    <span class="hljs-attr">"hidden"</span>: <span class="hljs-literal">false</span>
+}
+</div></code></pre>
+</li>
+<li>
+<p>Validate you can see the GIT Bash profile in the Terminal drop down.</p>
+<p>You should now see the dropdown in the terminal.</p>
+</li>
+</ol>
+<h3 id="alternate-version--modify-settings-in-gui">Alternate Version || Modify Settings in GUI</h3>
+<p>Sometimes you get the opportunity to modify the settings in the GUI (may be an older version only?)</p>
+<ol>
+<li>
+<p>Open the settings for Windows Terminal</p>
+</li>
+<li>
+<p>Hit the <code>+ Add a new profile</code> button</p>
+</li>
+<li>
+<p>Add a profile for <code>Git BASH</code></p>
+<ul>
+<li>Name:</li>
+</ul>
+<pre class="hljs"><code><div>Git BASH
+</div></code></pre>
+<ul>
+<li>Command Line:</li>
+</ul>
+<pre class="hljs"><code><div>%PROGRAMFILES%/Git/bin/bash.exe -i -l
+</div></code></pre>
+<ul>
+<li>Starting Directory</li>
+</ul>
+<pre class="hljs"><code><div>%USERPROFILE%
+</div></code></pre>
+<ul>
+<li>Icon</li>
+</ul>
+<pre class="hljs"><code><div>%PROGRAMFILES%/Git/mingw64/share/git/git-for-windows.ico
+</div></code></pre>
+<ul>
+<li>Tab Title</li>
+</ul>
+<pre class="hljs"><code><div>Git BASH
+</div></code></pre>
+<ul>
+<li>Run as Administrator : Toggle OFF</li>
+<li>Hide profile from Dropdown : Toggle OFF</li>
+</ul>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>You have now completed the set up for GIT and have made sure that GIT is working on your machine and in the Windows Terminal.</p>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>10_Docker.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="get-docker">Get Docker</h1>
+<p>In this task you'll get Docker installed on your machine.</p>
+<blockquote>
+<p><strong>Note:</strong> If you are not working for a large organization you can use Docker Desktop.  If you are working for a large organization, you should avoid using Docker Desktop unless your organization is paying for licensing.</p>
+</blockquote>
+<p>Because of licensing issues, this tutorial will utilize Docker directly within WSL without Docker Desktop.</p>
+<p>If you can use Docker Desktop, you should just install the solution from their website and docker will then be working for your from that point on in both WSL and Windows.</p>
+<h2 id="docker-desktop">Docker Desktop</h2>
+<p>If you are working for a large organization, you should avoid using Docker Desktop unless your organization is paying for licensing. If you are on your own, you can use Docker Desktop.</p>
+<blockquote>
+<p><strong>Note:</strong> The videos will not cover installing docker desktop.  If you install and use Docker Desktop, you are going to be done with this walkthrough.</p>
+</blockquote>
+<h2 id="docker-without-docker-desktop">Docker without Docker Desktop</h2>
+<p>Make sure your machine can handle docker.</p>
+<h3 id="virtualization">Virtualization</h3>
+<p>I am creating these videos on a virtual machine with 4 cores.  In order for the platform to allow the containerization to work, I have to have a couple of Windows Features enabled.  If you are running on your own machine, you likely do not need to do this.  I do not believe it would hurt if you do enable these features, but you may not need to.</p>
+<ol>
+<li>
+<p>Windows Features On or Off</p>
+<p>Open the Windows Features On or Off dialog and ensure that the following features are enabled:</p>
+<ul>
+<li>Hyper-V</li>
+<li>Virtual Machine Platform</li>
+<li>Windows Hypervisor Platform</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Do not enable <code>Containers</code>.  I know this is anti-intuitive, but you are not running Windows Server or Windows containers on this machine so it will be useless to turn this feature on.</p>
+</blockquote>
+</li>
+<li>
+<p>Restart your machine</p>
+</li>
+<li>
+<p>Open a PowerShell terminal as an administrator</p>
+</li>
+<li>
+<p>Log in to WSL</p>
+<pre><code> ```PowerShell
+ wsl
+ ```  
+</code></pre>
+</li>
+<li>
+<p>Follow this excellent tutorial to get Docker installed and working on your machine</p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04" target="_blank">&quot;Brian Hogan's Docker Tutorial at Digital Ocean&quot;</a></p>
+</li>
+<li>
+<p>Make sure to enable the ability to run docker without <code>sudo</code> (it's in the tutorial)</p>
+</li>
+<li>
+<p>Make sure to run the hello world container.</p>
+</li>
+</ol>
+<h2 id="additional-updates">Additional Updates</h2>
+<h3 id="docker-desktop">Docker Desktop</h3>
+<p>I decided to recorde a quick video of Docker Desktop running on another machine.  I did this because I wanted to show you what it looks like when you run Docker Desktop.  I also wanted to show you how much easier it can be without having to run commands from the command line.</p>
+<h3 id="docker-without-docker-desktop">Docker without Docker Desktop</h3>
+<p>I then also decided to run the same tutorial as above.  As long as I've never started Docker Desktop, I can use the local instance of Docker on the machine without Docker Desktop.  One caveat is the command start the docker service on the WSL instance is different than the tutorial.  I have included the command below.</p>
+<pre class="hljs"><code><div>sudo service docker start
+</div></code></pre>
+<p>I noticed, however, that as soon as I start Docker Desktop, the command is overtaken by Docker Desktop and I can no longer use the local instance of Docker.  I have to restart the machine to get the local instance of Docker to work again.  Even stopping Docker Desktop does not allow me to use the local instance of Docker, as the docker instance is stopped but starting it does not work after having run Docker Desktop.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You are now able to use WSL2 with Ubuntu to run docker containers on your machine.  You can use this to run docker and do modern cloud-native development on your machine.  You also know that you do not need to use Docker Desktop, which could be very valuable when it comes to working for a large organization that does not want to pay for licensing for Docker Desktop.</p>
+
+</body>
+</html>

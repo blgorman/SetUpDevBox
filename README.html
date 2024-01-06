@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="getting-your-dev-box-set-up">Getting your Dev Box Set up</h1>
+<p>Hello and welcome to this walkthrough on getting your dev box set up.  This walkthrough will walk you through the steps to get your Windows machine for modern cloud application development.  This will include installing the following:</p>
+<ul>
+<li>Visual Studio Code</li>
+<li>Windows Terminal</li>
+<li>GIT</li>
+<li>SQL Server Developer Edition</li>
+<li>SQL Server Management Studio</li>
+<li>Visual Studio Community</li>
+<li>Java 21</li>
+<li>Chocolatey</li>
+<li>NodeJS</li>
+<li>NPM</li>
+<li>Yarn</li>
+<li>Angular</li>
+<li>Windows Subsystem for Linux (WSL2)</li>
+<li>Ubuntu</li>
+<li>Docker</li>
+<li>Azure CLI</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This walkthrough assumes you have a Windows machine.  It also assumes you have administrative rights on your machine.  If you do not have administrative rights on your machine, you will not be able to complete this walkthrough.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>You can mostly complete these modules in any order, however I would recommend doing the first 5 modules in order.  If you are following the walkthrough, you must do module 4 before you can complete module 5.</p>
+<p>A few of these walkthroughs are completely optional.  You may only need some of them.  If you don't need a module, then skip it and move on.</p>
+<h2 id="modules">Modules</h2>
+<ol>
+<li><a href="./01_VisualStudioCode.md" target="_blank">Visual Studio Code</a></li>
+<li><a href="./02_WindowsTerminal.md" target="_blank">Windows Terminal</a></li>
+<li><a href="./03_GIT.md" target="_blank">GIT</a></li>
+<li><a href="./04_SQLServer.md" target="_blank">SQL Server</a></li>
+<li><a href="./05_VisualStudioCommunity.md" target="_blank">Visual Studio Community</a></li>
+<li><a href="./06_Java.md" target="_blank">Java</a></li>
+<li><a href="./07_Chocolatey.md" target="_blank">Chocolatey</a></li>
+<li><a href="./08_NodeNPMYarn.md" target="_blank">Node, NPM, YARN, and Angular</a></li>
+<li><a href="./09_WindowsSubsystemForLinux.md" target="_blank">Windows Subsystem for Linux</a></li>
+<li><a href="./10_Docker.md" target="_blank">Docker</a></li>
+<li><a href="./11_AzureCLI.md" target="_blank">Azure CLI</a></li>
+</ol>
+<h2 id="videos">Videos</h2>
+<ol>
+<li><a href="https://youtu.be/uQiL5-cjhJM" target="_blank">Visual Studio Code</a></li>
+<li><a href="https://youtu.be/6VXk3leS084" target="_blank">Windows Terminal</a></li>
+<li><a href="https://youtu.be/SHDU21aXazI" target="_blank">GIT - Part 1 - Installation</a></li>
+<li><a href="https://youtu.be/b9rgfOD-JgU" target="_blank">GIT - Part 2 - Validation of installation and create a repo and configure user</a></li>
+<li><a href="https://youtu.be/yidm6COOjwc" target="_blank">SQL Server - Part 1 - Install SQL Developer and SSMS</a></li>
+<li><a href="https://youtu.be/7TbbxHXBQiU" target="_blank">SQL Server - Part 2 - Validate installation, connect SSMS, download and restore AdventureWorks2022 Full</a></li>
+<li><a href="https://youtu.be/s5Z1KfnSO3A" target="_blank">Visual Studio Community - Part 1 - Install Visual Studio Community</a></li>
+<li><a href="https://youtu.be/NQJ67GFgZrE" target="_blank">Visual Studio Community - Part 2 - Validate installation and create an MVC web that connects to the local SQL Database</a></li>
+<li><a href="https://youtu.be/Nrn2LcZ8Lsc" target="_blank">Java 21</a></li>
+<li><a href="https://youtu.be/it9-4S5F174" target="_blank">Chocolatey</a></li>
+<li><a href="https://youtu.be/apFkxF06Yxg" target="_blank">Node, NPM, YARN, and Angular</a></li>
+<li><a href="https://youtu.be/GzDNijxmN14" target="_blank">Windows Subsystem for Linux</a></li>
+<li><a href="https://youtu.be/HijkDNoswoc" target="_blank">Docker without Docker Desktop</a></li>
+<li><a href="https://youtu.be/hDT-KJg5jlQ" target="_blank">Docker Desktop Quick Look (installed on another machine, reviewed to see it in action)</a></li>
+<li><a href="https://youtu.be/25EUwrcrKrs" target="_blank">Azure CLI</a></li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope you have found this information useful and that you are able to get your machine set up for modern cloud application development.  If you have any questions, please feel free to reach out to me on</p>
+<ul>
+<li>twitter <a href="https://twitter.com/blgorman" target="_blank">@blgorman</a></li>
+<li>linked in <a href="https://www.linkedin.com/in/brian-l-gorman/" target="_blank">Brian Gorman</a></li>
+</ul>
+<h2 id="feedback">Feedback</h2>
+<p>If you have any issues or feedback, please open an issue on the repository or leave comments.  I will try to respond as quickly as possible, and appreciate any feedback, positive or negative.  If you have any suggestions for improvements, please feel free to open an issue or a pull request as well.</p>
+
+</body>
+</html>

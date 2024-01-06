@@ -365,4 +365,6 @@ Sometimes you get the opportunity to modify the settings in the GUI (may be an o
     - Run as Administrator : Toggle OFF
     - Hide profile from Dropdown : Toggle OFF
 
+## Conclusion
+
 You have now completed the set up for GIT and have made sure that GIT is working on your machine and in the Windows Terminal.

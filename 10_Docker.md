@@ -48,6 +48,22 @@ I am creating these videos on a virtual machine with 4 cores.  In order for the 
 
 1. Make sure to run the hello world container.
 
+## Additional Updates
+
+### Docker Desktop
+
+I decided to recorde a quick video of Docker Desktop running on another machine.  I did this because I wanted to show you what it looks like when you run Docker Desktop.  I also wanted to show you how much easier it can be without having to run commands from the command line.
+
+### Docker without Docker Desktop
+
+I then also decided to run the same tutorial as above.  As long as I've never started Docker Desktop, I can use the local instance of Docker on the machine without Docker Desktop.  One caveat is the command start the docker service on the WSL instance is different than the tutorial.  I have included the command below.
+
+```bash
+sudo service docker start
+```  
+
+I noticed, however, that as soon as I start Docker Desktop, the command is overtaken by Docker Desktop and I can no longer use the local instance of Docker.  I have to restart the machine to get the local instance of Docker to work again.  Even stopping Docker Desktop does not allow me to use the local instance of Docker, as the docker instance is stopped but starting it does not work after having run Docker Desktop.
+
 ## Conclusion
 
-You are now able to use WSL2 with Ubuntu to run docker containers on your machine.  You can use this to run docker and do modern cloud-native development on your machine.  
+You are now able to use WSL2 with Ubuntu to run docker containers on your machine.  You can use this to run docker and do modern cloud-native development on your machine.  You also know that you do not need to use Docker Desktop, which could be very valuable when it comes to working for a large organization that does not want to pay for licensing for Docker Desktop.
