@@ -31,32 +31,35 @@ A few of these walkthroughs are completely optional.  You may only need some of 
 
 ## Modules  
 
-1. [Visual Studio Code](./01_VisualStudioCode.md)
-1. [Windows Terminal](./02_WindowsTerminal.md)
-1. [GIT](./03_GIT.md)
-1. [SQL Server](./04_SQLServer.md)
-1. [Visual Studio Community](./05_VisualStudioCommunity.md)
-1. [Java](./06_Java.md)
-1. [Chocolatey](./07_Chocolatey.md)
-1. [Node, NPM, YARN, and Angular](./08_NodeNPMYarn.md)
-1. [Windows Subsystem for Linux](./09_WindowsSubsystemForLinux.md)
-1. [Docker](./10_Docker.md)
-1. [Azure CLI](./11_AzureCLI.md)
+1. [Visual Studio Code](./01_VisualStudioCode.md)  
+1. [Windows Terminal](./02_WindowsTerminal.md)  
+1. [GIT](./03_GIT.md)  
+1. [SQL Server](./04_SQLServer.md)  
+1. [Visual Studio Community](./05_VisualStudioCommunity.md)  
+1. [Java](./06_Java.md)  
+1. [Chocolatey](./07_Chocolatey.md)  
+1. [Node, NPM, YARN, and Angular](./08_NodeNPMYarn.md)  
+1. [Windows Subsystem for Linux](./09_WindowsSubsystemForLinux.md)  
+1. [Docker](./10_Docker.md)  
+1. [Azure CLI](./11_AzureCLI.md)  
 
 ## Videos   
 
-1. [Visual Studio Code](https://youtu.be/uQiL5-cjhJM)
-1. [Windows Terminal](https://youtu.be/6VXk3leS084)
-1. [GIT]()
-1. [SQL Server]()
-1. [Visual Studio Community]()
-1. [Java]()
-1. [Chocolatey]()
-1. [Node, NPM, YARN, and Angular]()
-1. [Windows Subsystem for Linux]()
-1. [Docker]()
+1. [Visual Studio Code](https://youtu.be/uQiL5-cjhJM)  
+1. [Windows Terminal](https://youtu.be/6VXk3leS084)  
+1. [GIT - Part 1 - Installation](https://youtu.be/SHDU21aXazI)  
+1. [GIT - Part 2 - Validation of installation and create a repo and configure user](https://youtu.be/b9rgfOD-JgU)  
+1. [SQL Server - Part 1 - Install SQL Developer and SSMS](https://youtu.be/yidm6COOjwc)  
+1. [SQL Server - Part 2 - Validate installation, connect SSMS, download and restore AdventureWorks2022 Full](https://youtu.be/7TbbxHXBQiU)  
+1. [Visual Studio Community - Part 1 - Install Visual Studio Community](https://youtu.be/s5Z1KfnSO3A)  
+1. [Visual Studio Community - Part 2 - Validate installation and create an MVC web that connects to the local SQL Database](https://youtu.be/NQJ67GFgZrE)  
+1. [Java 21](https://youtu.be/Nrn2LcZ8Lsc)
+1. [Chocolatey](https://youtu.be/it9-4S5F174)
+1. [Node, NPM, YARN, and Angular](https://youtu.be/apFkxF06Yxg)
+1. [Windows Subsystem for Linux](https://youtu.be/GzDNijxmN14)
+1. [Docker without Docker Desktop]()
+1. [Docker Desktop Quick Look (installed on another machine, reviewed to see it in action)]()
 1. [Azure CLI]()
-
 
 ## Conclusion
 
